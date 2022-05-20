@@ -23,6 +23,7 @@
     width:300px;
     margin-top: 1rem;
     display:flex;
+    padding: 5px;
 }
 
 .icon{
