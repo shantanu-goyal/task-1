@@ -11,6 +11,8 @@ function initialise(){
 }
 
 
+
+
 function updateSelection(currentIndex,newIndex,length){
     //Index Cannot go outside of the bounds
     if(newIndex>length || newIndex<1){    
@@ -23,11 +25,9 @@ function updateSelection(currentIndex,newIndex,length){
     image.setAttribute('src',items[newIndex-1].previewImage);
     let text=document.querySelector('.text');
     text.innerHTML=items[newIndex-1].title;
-
-
 }
 
-let length=items.length;
+var length=items.length;
 let currentIndex=1;
 let listContainer=document.querySelector('.list');
 let fragment=document.createDocumentFragment();
@@ -62,15 +62,10 @@ initialise();
 
 document.querySelectorAll('.outerdiv').forEach(item => {
     item.addEventListener('click', event => {
-        let imageNode=item.childNodes[0];
-        let titleNode=item.childNodes[1];
-        console.log(imageNode);
-        const src=imageNode.getAttribute('src');
-        const title=titleNode.innerHTML;
-        let image=document.querySelector('.image');
-        image.setAttribute('src',src);
-        let text=document.querySelector('.text');
-        text.innerHTML=title;
+        let parent = item.parentNode;
+        var index = Array.prototype.indexOf.call(parent.children, item);
+        updateSelection(currentIndex,Number(index)+1,length);
+        currentIndex=Number(index)+1;
     })
 })
 
@@ -92,7 +87,6 @@ document.addEventListener('keydown', function(event) {
                 updateSelection(currentIndex,currentIndex+1,length);
                 currentIndex=currentIndex+1;
             }
-            
             break;
     }
 });
