@@ -1,0 +1,48 @@
+import items from './items.js';
+
+
+let currentIndex=0;
+
+let listContainer=document.querySelector('.list');
+let fragment=document.createDocumentFragment();
+items.forEach((item)=>{
+    //Creating a wrapper
+    let outerDiv=document.createElement('div');
+    //Adding the class outerdiv to the outermost div containing the icon and the title
+    outerDiv.classList.add('outerdiv');
+    //Creating the icon of the image
+    let icon=document.createElement('img');
+    icon.classList.add('icon');
+    icon.setAttribute('src',item.previewImage);
+    // Creating a div for title
+    let title=document.createElement('div');
+    title.classList.add('title');
+    title.innerHTML=item.title;
+    //Appending icon to outerdiv
+    outerDiv.appendChild(icon);
+    //Appending title to outerdiv
+    outerDiv.appendChild(title);
+    //Appending outerdiv to fragment
+    fragment.appendChild(outerDiv);
+})
+//Adding the list to the list container
+listContainer.append(fragment);
+
+
+// Creating event Listners for all items in the list
+
+document.querySelectorAll('.outerdiv').forEach(item => {
+    item.addEventListener('click', event => {
+        let imageNode=item.childNodes[0];
+        let titleNode=item.childNodes[1];
+        console.log(imageNode);
+        const src=imageNode.getAttribute('src');
+        const title=titleNode.innerHTML;
+        let image=document.querySelector('.image');
+        image.setAttribute('src',src);
+        let text=document.querySelector('.text');
+        text.innerHTML=title;
+    })
+})
+
+// For creating 

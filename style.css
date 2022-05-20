@@ -1,0 +1,52 @@
+.wrapper{
+    position: absolute;
+    display: flex;
+    flex-flow: row wrap-reverse;
+}
+.left{
+    width:300px;
+}
+
+.right{
+    width:500px;
+    margin-left: 3rem;
+}
+
+.list{
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-left: 2rem;
+}
+
+.outerdiv{
+    width:300px;
+    margin-top: 1rem;
+    display:flex;
+}
+
+.icon{
+    display: block;
+    height:40px;
+    width:40px;
+    margin-right: 10px;
+    margin-left: 10px;
+    object-fit: fill;
+    border-radius: 5px;
+}
+
+.title{
+    overflow-x: scroll;
+    white-space: nowrap;
+    margin-top: 10px;
+}
+
+.text{
+    text-align: center;
+}
+
+.image{
+    object-fit: fill;
+    width: 500px;
+    height:700px;
+}
