@@ -50,3 +50,10 @@
     width: 500px;
     height:700px;
 }
+
+.active{
+    background-color: #235aad;
+    padding: 5px;
+    border-radius: 5px;
+    color: white;
+}

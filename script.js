@@ -1,10 +1,37 @@
 import items from './items.js';
 
 
-let currentIndex=0;
+function initialise(){
+    let listContainer=document.querySelector('.list');
+    listContainer.childNodes[1].classList.add('active');
+    let image=document.querySelector('.image');
+    image.setAttribute('src',items[currentIndex-1].previewImage);
+    let text=document.querySelector('.text');
+    text.innerHTML=items[currentIndex-1].title;
+}
 
+
+function updateSelection(currentIndex,newIndex,length){
+    //Index Cannot go outside of the bounds
+    if(newIndex>length || newIndex<1){    
+        return;
+    }
+    let listContainer=document.querySelector('.list');
+    listContainer.childNodes[currentIndex].classList.toggle('active');
+    listContainer.childNodes[newIndex].classList.toggle('active');
+    let image=document.querySelector('.image');
+    image.setAttribute('src',items[newIndex-1].previewImage);
+    let text=document.querySelector('.text');
+    text.innerHTML=items[newIndex-1].title;
+
+
+}
+
+let length=items.length;
+let currentIndex=1;
 let listContainer=document.querySelector('.list');
 let fragment=document.createDocumentFragment();
+
 items.forEach((item)=>{
     //Creating a wrapper
     let outerDiv=document.createElement('div');
@@ -28,6 +55,8 @@ items.forEach((item)=>{
 //Adding the list to the list container
 listContainer.append(fragment);
 
+initialise();
+
 
 // Creating event Listners for all items in the list
 
@@ -45,4 +74,25 @@ document.querySelectorAll('.outerdiv').forEach(item => {
     })
 })
 
-// For creating 
+
+
+
+
+document.addEventListener('keydown', function(event) {
+    switch (event.keyCode) {
+        case 38:
+            if(currentIndex>1){
+                updateSelection(currentIndex,currentIndex-1,length);
+                currentIndex=currentIndex-1;
+            }
+            break;
+        case 40:
+            if(currentIndex<length)
+            {
+                updateSelection(currentIndex,currentIndex+1,length);
+                currentIndex=currentIndex+1;
+            }
+            
+            break;
+    }
+});
