@@ -12,10 +12,13 @@ function initialise() {
     let image = document.querySelector('.image');
     image.setAttribute('src', items[currentIndex - 1].previewImage);
     let text = document.querySelector('.text');
-    text.innerHTML = getShortenedTitle(items[currentIndex - 1].title);
+    text.value = items[currentIndex - 1].title;
 }
 
-
+function updateLabel(currentIndex,text){
+    let listContainer = document.querySelector('.list');
+    listContainer.childNodes[currentIndex].childNodes[1].innerHTML=getShortenedTitle(text);
+}
 
 
 function updateSelection(currentIndex, newIndex, length) {
@@ -29,7 +32,7 @@ function updateSelection(currentIndex, newIndex, length) {
     let image = document.querySelector('.image');
     image.setAttribute('src', items[newIndex - 1].previewImage);
     let text = document.querySelector('.text');
-    text.innerHTML = getShortenedTitle(items[newIndex - 1].title);
+    text.value = items[newIndex - 1].title;
 }
 
 var length = items.length;
@@ -63,7 +66,8 @@ listContainer.append(fragment);
 initialise();
 
 
-// Creating event Listners for all items in the list
+
+// Updating the selection on click
 
 document.querySelectorAll('.outerdiv').forEach(item => {
     item.addEventListener('click', event => {
@@ -76,7 +80,7 @@ document.querySelectorAll('.outerdiv').forEach(item => {
 
 
 
-
+// Updating the selection on key press
 
 document.addEventListener('keydown', function (event) {
     switch (event.keyCode) {
@@ -91,6 +95,14 @@ document.addEventListener('keydown', function (event) {
                 updateSelection(currentIndex, currentIndex + 1, length);
                 currentIndex = currentIndex + 1;
             }
-            break;
+           break;
     }
+});
+
+// Updating the labels
+
+
+let text=document.querySelector('.text');
+text.addEventListener('change',function(event){
+    updateLabel(currentIndex,text.value);
 });
