@@ -49,9 +49,9 @@
 }
 
 .image{
-    object-fit: fill;
+    object-fit: cover;
     width: 500px;
-    height:700px;
+    height:650px;
 }
 
 .active{
