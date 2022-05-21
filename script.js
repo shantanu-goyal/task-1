@@ -2,7 +2,7 @@ import items from './items.js';
 
 function getShortenedTitle(title) {
     let maxLength=30;
-    if(title.length>31){
+    if(title.length>maxLength){
         let result=title.substring(0,15);
         result+=".....";
         result+=title.slice(-10);
@@ -102,5 +102,7 @@ document.addEventListener('keydown', function (event) {
 // Updating the labels
 let text=document.querySelector('.text');
 text.addEventListener('change',function(event){
+    items[currentIndex-1].title=text.value;
     updateLabel(currentIndex,text.value);
+    
 });
