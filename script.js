@@ -4,8 +4,8 @@ function getShortenedTitle(title) {
     let maxLength=30;
     if(title.length>maxLength){
         let result=title.substring(0,15);
-        result+=".....";
-        result+=title.slice(-10);
+        result+="...";
+        result+=title.slice(-12);
         return result;
     }
     return title;
