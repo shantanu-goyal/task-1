@@ -21,7 +21,7 @@
     gap: 5px;
 }
 
-.outerdiv{
+.label-container{
     width:300px;
     margin-top: 1rem;
     display:flex;
@@ -37,7 +37,7 @@
     border-radius: 5px;
 }
 
-.title{
+.label{
     white-space: nowrap;
     margin-top: 10px;
 }
