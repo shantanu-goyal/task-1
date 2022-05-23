@@ -60,3 +60,40 @@
     border-radius: 5px;
     color: white;
 }
+
+@media screen and (max-width:500px){
+    .image{
+        width:300px;
+        height:500px;
+    }
+    .text{
+        width: 300px;
+    }
+    .right{
+        width:300px;
+    }
+    .left{
+        width: 250px;
+        margin-left: 2rem;
+    }
+    
+}
+
+
+@media screen and (max-width:870px){
+    .image{
+        width:300px;
+        height:500px;
+    }
+    .text{
+        width: 300px;
+    }
+    .right{
+        width:300px;
+    }
+    .left{
+        width: 250px;
+        margin-right: 2rem;
+        margin-left: 2rem;
+    }
+}
