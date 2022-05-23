@@ -30,10 +30,10 @@
 
 .icon{
     display: block;
-    height:40px;
-    width:40px;
+    height:35px;
+    width:35px;
     margin-right: 10px;
-    object-fit: fill;
+    object-fit: cover;
     border-radius: 5px;
 }
 
@@ -60,7 +60,9 @@
     border-radius: 5px;
     color: white;
 }
-
+.show{
+    display: none;
+}
 
 @media screen and (max-width:870px){
     .image{
@@ -83,7 +85,7 @@
 
 @media screen and (max-width:500px){
     .wrapper{
-        width: 85%;
+        width: 80%;
     }
     .image{
         width:300px;

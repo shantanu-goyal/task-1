@@ -7,7 +7,8 @@ const length = items.length;
 //Current Position of the selection. By default the first item in the item array is selected.
 let currentIndex = 1;
 
-
+let image = document.querySelector('.image');
+image.classList.toggle('show');
 let listContainer = document.querySelector('.list');
 let fragment = document.createDocumentFragment();
 
@@ -33,6 +34,7 @@ function initialise() {
     
     let image = document.querySelector('.image');
     image.setAttribute('src', items[currentIndex - 1].previewImage);
+    image.classList.toggle('show');
     let text = document.querySelector('.text');
     text.value = items[currentIndex - 1].title;
 }
@@ -78,6 +80,7 @@ items.forEach((item) => {
     let icon = document.createElement('img');
     icon.classList.add('icon');
     icon.setAttribute('src', item.previewImage);
+    icon.setAttribute('alt',"icon")
     // Creating a div for label
     let label = document.createElement('div');
     label.classList.add('label');
