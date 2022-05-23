@@ -32,6 +32,7 @@ function initialise() {
     listContainer.childNodes[1].classList.add('active');
     let image = document.querySelector('.image');
     image.setAttribute('src', items[currentIndex - 1].previewImage);
+    image.classList.toggle('show')
     let text = document.querySelector('.text');
     text.value = items[currentIndex - 1].title;
     let body = document.getElementsByTagName("BODY")[0];
