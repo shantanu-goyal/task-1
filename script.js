@@ -7,8 +7,8 @@ const length = items.length;
 //Current Position of the selection. By default the first item in the item array is selected.
 let currentIndex = 1;
 
-let image = document.querySelector('.image');
-image.classList.toggle('show');
+let body = document.getElementsByTagName("BODY")[0];
+body.classList.toggle('show');
 let listContainer = document.querySelector('.list');
 let fragment = document.createDocumentFragment();
 
@@ -28,15 +28,14 @@ function getShortenedLabel(label) {
 and loads the image and the title in the right column.*/
 function initialise() {
     let listContainer = document.querySelector('.list');
-    
     //Adds a class 'active' to the label-container div
     listContainer.childNodes[1].classList.add('active');
-    
     let image = document.querySelector('.image');
     image.setAttribute('src', items[currentIndex - 1].previewImage);
-    image.classList.toggle('show');
     let text = document.querySelector('.text');
     text.value = items[currentIndex - 1].title;
+    let body = document.getElementsByTagName("BODY")[0];
+    body.classList.toggle('show');
 }
 
 
