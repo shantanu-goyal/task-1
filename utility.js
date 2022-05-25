@@ -1,5 +1,7 @@
 import items from "./items.js";
 import { getCurrentIndex } from "./variables.js";
+
+
 //The function returns the shortend label if it exceeds the maximum length.
 export function getShortenedLabel(label) {
   const MAX_LENGTH = 30;
