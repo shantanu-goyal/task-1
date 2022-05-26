@@ -1,6 +1,11 @@
 import items from "./items.js";
 import { getCurrentIndex } from "./variables.js";
 
+export function fib(num){
+  if(num<=1)return num;
+  return fib(num-2) + fib(num-1);
+}
+
 
 //The function returns the shortend label if it exceeds the maximum length.
 export function getShortenedLabel(label) {
