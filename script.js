@@ -1,5 +1,5 @@
 //Imports
-import { addTitleEventListener, addKeyPressEventListener, addClickEventListener, addFormEventListener } from './event-listeners.js';
+import { addTitleEventListener, addKeyPressEventListener, addClickEventListener, addFormEventListener ,addComputeButtonClick} from './event-listeners.js';
 import { renderItems, setActiveElementOnLoad,fib} from './utility.js';
 
 
@@ -7,11 +7,10 @@ import { renderItems, setActiveElementOnLoad,fib} from './utility.js';
 function initialiseWebWorker(){
     const myWorker = new Worker('./worker.js');
     console.time('workerTime')
-    myWorker.postMessage(40)
+    myWorker.postMessage(45)
     myWorker.onmessage = function(event) {
-        let result=event.data;
         console.timeEnd('workerTime')
-        console.log(event.data)
+        console.log("Fibonacci Computed from worker: ",event.data)
     };
     
 }
@@ -20,7 +19,7 @@ function initialiseWebWorker(){
 /* This function is called when the website is loaded. This sets the initial selection to the first item
 and loads the image and the title in the right column.*/
 function initialise() {
-    console.time("timer");  
+    console.time("loadTime");  
     if(window.Worker){
         initialiseWebWorker();
     }
@@ -31,7 +30,8 @@ function initialise() {
     addTitleEventListener();
     addKeyPressEventListener();
     addClickEventListener();
-    console.timeEnd("timer");
+    addComputeButtonClick();
+    console.timeEnd("loadTime");
     
 }
 

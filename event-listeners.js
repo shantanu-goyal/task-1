@@ -1,6 +1,6 @@
 import { getCurrentIndex, setCurrentIndex } from './variables.js'
 import { updateLabel } from './utility.js';
-import { updateSelection } from './utility.js';
+import { updateSelection, fib } from './utility.js';
 import items from './items.js';
 
 const LENGTH = items.length;
@@ -55,6 +55,14 @@ export function addFormEventListener() {
   document.getElementsByTagName('form')[0].addEventListener('submit', function (event) {
     event.preventDefault();
   })
+}
+
+export function addComputeButtonClick(){
+  document.querySelector('.fibonacci').addEventListener('click',function(event){
+    console.time('mainThreadBlock');
+    console.log("Fibonacci computed from Main Thread: ",fib(45))
+    console.timeEnd('mainThreadBlock')
+  });
 }
 
 

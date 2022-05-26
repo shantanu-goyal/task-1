@@ -66,6 +66,17 @@
     display: none;
 }
 
+
+.fibonacci{
+    position:absolute;
+    width: 100px;
+    background-color: aquamarine;
+    text-align: center;
+    font-weight: bold;
+    bottom: 0;
+    left: 0;
+}
+
 @media screen and (max-width:870px){
     .image{
         width:300px;
