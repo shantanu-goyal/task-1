@@ -40,20 +40,32 @@ export function updateSelection(currentIndex, newIndex, length) {
 }
 
 
+function setIconAttributes(icon,link){
+  icon.classList.add('icon');
+  icon.setAttribute('src', link);
+  icon.setAttribute('alt', "icon")
+  icon.setAttribute('height','35px');
+  icon.setAttribute('width','35px');
+  icon.setAttribute('loading','lazy');
+  return icon;
+}
+
 export function renderItems() {
   let listContainer = document.querySelector('.list');
   let fragment = document.createDocumentFragment();
-
+  var idx=1;
   items.forEach((item) => {
     //Creating a label contaiber wrapper
     let labelContainer = document.createElement('div');
     //Adding the class 'label-container' to the outermost div containing the icon and the label
     labelContainer.classList.add('label-container');
+    labelContainer.setAttribute('data-index',idx++);
     //Creating the icon of the image
     let icon = document.createElement('img');
-    icon.classList.add('icon');
-    icon.setAttribute('src', item.previewImage);
-    icon.setAttribute('alt', "icon")
+    var link=item.previewImage;
+    link=link.slice(0,-11);
+    link+="w=35&h=35";
+    icon=setIconAttributes(icon,link);
     // Creating a div for label
     let label = document.createElement('div');
     label.classList.add('label');
@@ -71,9 +83,9 @@ export function renderItems() {
 
 export function setActiveElementOnLoad() {
   let listContainer = document.querySelector('.list');
-  listContainer.childNodes[1].classList.add('active');
+  let currentIndex=getCurrentIndex();
+  listContainer.childNodes[currentIndex].classList.add('active');
   let image = document.querySelector('.image');
-  let currentIndex = getCurrentIndex();
   image.setAttribute('src', items[currentIndex - 1].previewImage);
   image.classList.toggle('show')
   let text = document.querySelector('.text');
